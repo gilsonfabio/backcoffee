@@ -12,10 +12,11 @@ module.exports = {
 
     async searchGrp (request, response) {
         let id = request.params.idGrp;
+       
         const grupo = await connection('grupos')
-        .where('idGrupo', id)
+        .where('grpId', id)
         .select('*');
-    
+        
         return response.json(grupo);
     },
 
@@ -23,7 +24,7 @@ module.exports = {
         let id = request.params.idGrp;         
         const { grpDescricao } = request.body;
         
-        await connection('grupos').where('idGrupo', id)   
+        await connection('grupos').where('grpId', id)   
         .update({
             grpDescricao                  
         });
@@ -34,10 +35,10 @@ module.exports = {
     async create(request, response) {
         const { grpDescricao } = request.body;
  
-        const [idGrupo] = await connection('grupos').insert({
+        const [grpId] = await connection('grupos').insert({
             grpDescricao
         });
            
-        return response.json({idGrupo});
+        return response.json({grpId});
     },
 };

@@ -13,7 +13,7 @@ module.exports = {
     async searchMar (request, response) {
         let id = request.params.idMar;
         const marca = await connection('marcas')
-        .where('idMarca', id)
+        .where('marId', id)
         .select('*');
     
         return response.json(marca);
@@ -23,7 +23,7 @@ module.exports = {
         let id = request.params.idMar;         
         const { marDescricao } = request.body;
         
-        await connection('marcas').where('idMarca', id)   
+        await connection('marcas').where('marId', id)   
         .update({
             marDescricao                  
         });
@@ -34,10 +34,10 @@ module.exports = {
     async create(request, response) {
         const { marDescricao } = request.body;
  
-        const [idMarca] = await connection('marcas').insert({
+        const [marId] = await connection('marcas').insert({
             marDescricao
         });
            
-        return response.json({idMarca});
+        return response.json({marId});
     },
 };

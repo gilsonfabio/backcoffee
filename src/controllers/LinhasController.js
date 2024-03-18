@@ -13,7 +13,7 @@ module.exports = {
     async searchLnh (request, response) {
         let id = request.params.idLnh;
         const linha = await connection('linhas')
-        .where('idLinha', id)
+        .where('lnhId', id)
         .select('*');
     
         return response.json(linha);
@@ -23,7 +23,7 @@ module.exports = {
         let id = request.params.idLnh;         
         const { lnhDescricao, lnhGrpId } = request.body;
         
-        await connection('linhas').where('idLinha', id)   
+        await connection('linhas').where('ilnhId', id)   
         .update({
             lnhDescricao,
             lnhGrpId                  
@@ -35,11 +35,11 @@ module.exports = {
     async create(request, response) {
         const { lnhDescricao, lnhGrpId } = request.body;
  
-        const [idLinha] = await connection('linhas').insert({
+        const [lnhId] = await connection('linhas').insert({
             lnhDescricao,
             lnhGrpId
         });
            
-        return response.json({idLinha});
+        return response.json({lnhId});
     },
 };

@@ -13,7 +13,7 @@ module.exports = {
     async searchMov (request, response) {
         let id = request.params.idMov;
         const movimento = await connection('tipmovim')
-        .where('idTipMov', id)
+        .where('tpmId', id)
         .select('*');
     
         return response.json(movimento);
@@ -23,7 +23,7 @@ module.exports = {
         let id = request.params.idMov;         
         const { tpmDescricao, tpmTipo } = request.body;
         
-        await connection('tipmovim').where('idTipMov', id)   
+        await connection('tipmovim').where('tpmId', id)   
         .update({
             tpmDescricao,       
             tpmTipo           
@@ -35,11 +35,11 @@ module.exports = {
     async create(request, response) {
         const { tpmDescricao, tpmTipo } = request.body;
  
-        const [idTipMov] = await connection('tipmovim').insert({
+        const [tpmId] = await connection('tipmovim').insert({
             tpmDescricao,
             tpmTipo
         });
            
-        return response.json({idTipMov});
+        return response.json({tpmId});
     },
 };
