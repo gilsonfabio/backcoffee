@@ -21,23 +21,23 @@ module.exports = {
 
     async updMovim(request, response) {
         let id = request.params.idMov;         
-        const { tpmDescricao, tpmTipo } = request.body;
+        const { tpmDescricao, tpmOperacao } = request.body;
         
         await connection('tipmovim').where('tpmId', id)   
         .update({
             tpmDescricao,       
-            tpmTipo           
+            tpmOperacao        
         });
            
         return response.status(204).send();
     },
 
     async create(request, response) {
-        const { tpmDescricao, tpmTipo } = request.body;
+        const { tpmDescricao, tpmOperacao } = request.body;
  
         const [tpmId] = await connection('tipmovim').insert({
             tpmDescricao,
-            tpmTipo
+            tpmOperacao
         });
            
         return response.json({tpmId});

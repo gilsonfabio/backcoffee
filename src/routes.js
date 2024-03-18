@@ -7,6 +7,7 @@ const LinhasController = require('./controllers/LinhasController');
 const MarcasController = require('./controllers/MarcasController');
 const MovimentosController = require('./controllers/MovimentosController');
 const UsersController = require('./controllers/UsersController');
+const ProdutosController = require('./controllers/ProdutosController');
 
 routes.get('/', (request, response) => {
     response.json({
@@ -36,5 +37,10 @@ routes.post('/newmovim', MovimentosController.create);
 
 routes.post('/signIn', UsersController.signIn);
 routes.post('/newuser', UsersController.newuser);
+
+routes.get('/produtos', ProdutosController.index);
+routes.get('/searchPro/:idPro', ProdutosController.searchPro);
+routes.put('/updProduto/:idPro', ProdutosController.updProduto);
+routes.post('/newproduto', ProdutosController.create);
 
 module.exports = routes;
