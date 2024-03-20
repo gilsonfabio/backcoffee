@@ -8,6 +8,7 @@ const MarcasController = require('./controllers/MarcasController');
 const MovimentosController = require('./controllers/MovimentosController');
 const UsersController = require('./controllers/UsersController');
 const ProdutosController = require('./controllers/ProdutosController');
+const LancamentosController = require('./controllers/LancamentosController');
 
 routes.get('/', (request, response) => {
     response.json({
@@ -42,5 +43,9 @@ routes.get('/produtos', ProdutosController.index);
 routes.get('/searchPro/:idPro', ProdutosController.searchPro);
 routes.put('/updProduto/:idPro', ProdutosController.updProduto);
 routes.post('/newproduto', ProdutosController.create);
+
+routes.get('/lancamentos', LancamentosController.index);
+routes.post('/searchLanc', LancamentosController.searchLanc);
+routes.post('/newlancamento', LancamentosController.create);
 
 module.exports = routes;
