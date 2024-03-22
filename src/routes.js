@@ -32,8 +32,8 @@ routes.put('/updmarca/:idMar', MarcasController.updMarca);
 routes.post('/newmarca', MarcasController.create);
 
 routes.get('/movimentos', MovimentosController.index);
-routes.get('/searchMovim/:idMov', MovimentosController.searchMov);
-routes.put('/updmovim/:idMov', MovimentosController.updMovim);
+routes.get('/searchMovim/:idTpm', MovimentosController.searchMov);
+routes.put('/updmovim/:idTpm', MovimentosController.updMovim);
 routes.post('/newmovim', MovimentosController.create);
 
 routes.post('/signIn', UsersController.signIn);

@@ -11,7 +11,7 @@ module.exports = {
     },
 
     async searchMov (request, response) {
-        let id = request.params.idMov;
+        let id = request.params.idTpm;
         const movimento = await connection('tipmovim')
         .where('tpmId', id)
         .select('*');
@@ -20,7 +20,7 @@ module.exports = {
     },
 
     async updMovim(request, response) {
-        let id = request.params.idMov;         
+        let id = request.params.idTpm;         
         const { tpmDescricao, tpmOperacao } = request.body;
         
         await connection('tipmovim').where('tpmId', id)   
